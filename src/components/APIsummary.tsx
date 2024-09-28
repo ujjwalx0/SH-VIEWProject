@@ -29,6 +29,8 @@ Each endpoint includes validation to ensure data integrity:
 - Time values must not be null.
 - Special hour messages are limited to 100 characters.
 - Duplicate special hours for a given date are not allowed.
+- Standard hours are validated to ensure that time values are not null.
+- Invalid date formats return a specific error response.
 
 ### Implementation
 
