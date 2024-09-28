@@ -44,7 +44,7 @@ const SpecialHoursComponent: React.FC<Props> = ({ specialHours, fetchSpecialHour
           {specialHours.map((specialHour) => (
             <li key={specialHour.id} className="list-group-item d-flex justify-content-between align-items-center">
               {`${specialHour.date}: ${specialHour.openTime} - ${specialHour.closeTime} (${specialHour.message})`}
-              <div>
+              <div className='d-flex gap-2'>
                 <Button variant="warning" size="sm" onClick={() => handleEdit(specialHour)}>Edit</Button>
                 <Button variant="danger" size="sm" onClick={() => handleDelete(specialHour.id)}>Delete</Button>
               </div>
@@ -54,7 +54,13 @@ const SpecialHoursComponent: React.FC<Props> = ({ specialHours, fetchSpecialHour
       ) : (
         <p>No upcoming special hours</p>
       )}
-      <Button variant="secondary" onClick={handleClose}>Close</Button>
+     <div className="d-flex justify-content-end mt-3">
+  <Button variant="secondary" onClick={handleClose}>
+    Close
+  </Button>
+</div>
+
+
 
       
       <Modal show={showEditForm} onHide={handleCloseEditForm}>

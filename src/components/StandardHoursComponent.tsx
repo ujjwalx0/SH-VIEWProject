@@ -38,8 +38,8 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, sp
         </ul>
       </div>
       {todayHours && todaySpecialHoursMessage !="Regular hours" && (
-        <div className="alert alert-danger col-6 rounded " role="alert">
-          <strong>Special Hours for  Today </strong>
+        <div className="alert alert-danger col-4 rounded " role="alert">
+          <strong>Special Hours for  Today</strong>
           <table className="table table-sm " style={{ width: 'auto', margin: '0 auto' }}>
             <tbody>
               <tr>

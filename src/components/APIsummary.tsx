@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown';
 const markdown = `
 # Hello!
 
-Thank you for checking out my assignment! The assignment instructed only to outline how to implement the necessary functionality. However, due to some confusion, I reached out via email for clarification but haven't received a response. Thus, I provided a complete overview of the APIs as outlined below, although all the APIs are not rendered here on this web application.
+Thank you for taking the time to review my assignment! The task required outlining how to implement the necessary functionality. However, due to some confusion, I reached out via email for clarification but haven't received a response. Therefore, I've included a complete overview of the APIs below, even though not all APIs are rendered in this web application.
 
 ## API Overview
 
@@ -25,13 +25,18 @@ This application provides several endpoints to manage special and standard hours
 
 Each endpoint includes validation to ensure data integrity:
 
-- Validates that dates are not in the past.
-- Checks that time values are not null.
-- Ensures special hour messages do not exceed 100 characters.
-- Confirms that special hours for a given date do not already exist.
+- Dates cannot be in the past.
+- Time values must not be null.
+- Special hour messages are limited to 100 characters.
+- Duplicate special hours for a given date are not allowed.
+
 ### Implementation
 
-The **controller** manages the endpoints, handling requests and responses with appropriate HTTP status codes. The **service layer** encapsulates the business logic, ensuring data validation and retrieval from the database.
+For the backend, I set up a clean architecture using a **DTO** to handle data transfers. The **Entity** classes define the structure of our database tables, ensuring everything is well organized. 
+
+The **Service** layer contains all the business logic, making sure we validate inputs and manage data operations. The **Controller** layer is where the magic happens—it manages the API endpoints, processes incoming requests, and formats the responses in a way that’s easy to work with.
+
+The application connects to a PostgreSQL database, which allows for efficient data storage and retrieval. Each API call hits the service layer, where we validate the input, fetch the required data from the database, and return it in a nicely structured format.
 
 Thank you for your time, and have a great day!
 `;
