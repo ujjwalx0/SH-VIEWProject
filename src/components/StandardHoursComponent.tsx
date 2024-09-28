@@ -30,14 +30,14 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours }) 
   });
 
   return (
-    <div className="container mt-4 row align-items-center justify-content-center">
+    <div className="container mt-4 row align-items-center justify-content-center ">
       <h2 className="text-center">OPERATING HOURS</h2>
 
-      <div className="rounded col col-lg-6 col-sm-12">
+      <div className="rounded col col-lg-4 col-md-6 col-sm-12 ">
         <table className="table table-sm">
           <tbody>
             {todayHours && todaySpecialHoursMessage !== "Regular hours" && (
-              <tr >
+              <tr className='table-danger'>
                 <td colSpan={2} className=" text-danger mb-3 border-0" role="alert">
                   <strong>Special Hours for Today: {todaySpecialHoursMessage}<br /></strong>
                   {todayOpenTime} - {todayCloseTime}
@@ -63,10 +63,10 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours }) 
 
               return (
                 <React.Fragment key={key}>
-                  <tr>
+                  <tr className='table-danger'>
                     <th className="font-weight-bold border-0">{displayDays}</th>
                   </tr>
-                  <tr>
+                  <tr className='table-danger'>
                     <td className="text-muted border-0">{formattedOpenTime} – {formattedCloseTime}</td>
                   </tr>
                 </React.Fragment>
