@@ -11,7 +11,7 @@ interface Props {
   closeModal?: () => void; 
 }
 
-const AddSpecialHours: React.FC<Props> = ({ setShowForm, fetchSpecialHours, specialHour, closeModal }) => {
+const AddSpecialHours: React.FC<Props> = ({ setShowForm, fetchSpecialHours, specialHour }) => {
   const [specialHours, setSpecialHours] = useState<SpecialHours>({
     id: specialHour ? specialHour.id : 0,
     date: specialHour ? specialHour.date : '',

@@ -57,13 +57,13 @@ const HoursManagement: React.FC = () => {
       
 
       <div className="mb-4">
-        <Button className="btn btn-primary btn-sm rounded mx-2" onClick={handleShowSpecialHours}>
+        <Button className="btn btn-primary btn-sm rounded mx-2 my-2" onClick={handleShowSpecialHours}>
           Show Special Hours
         </Button>
-        <Button className="btn btn-success btn-sm rounded mx-2" onClick={() => setShowForm(true)}>
+        <Button className="btn btn-success btn-sm rounded mx-2 my-2" onClick={() => setShowForm(true)}>
           Add Special Hours
         </Button>
-        <Button className="btn btn-info btn-sm  rounded mx-2" onClick={handleShowApiSummary}>
+        <Button className="btn btn-info btn-sm  rounded mx-2 my-2" onClick={handleShowApiSummary}>
           Brief About Assesment solution
         </Button> 
       </div>
@@ -74,7 +74,7 @@ const HoursManagement: React.FC = () => {
         specialHours={specialHours} 
       />
       
-      <Modal show={showForm} onHide={() => setShowForm(false)}>
+      <Modal show={showForm} onHide={() => setShowForm(false)} >
         <Modal.Header closeButton>
           <Modal.Title>Add Special Hours</Modal.Title>
         </Modal.Header>
@@ -83,7 +83,7 @@ const HoursManagement: React.FC = () => {
         </Modal.Body>
       </Modal>
 
-      <Modal show={showSpecialHours} onHide={handleCloseSpecialHours}>
+      <Modal show={showSpecialHours} onHide={handleCloseSpecialHours} >
         <Modal.Header closeButton>
           <Modal.Title>Upcoming Special Hours</Modal.Title>
         </Modal.Header>
@@ -92,7 +92,7 @@ const HoursManagement: React.FC = () => {
         </Modal.Body>
       </Modal>
 
-      {/* Modal for API Summary */}
+     
       <Modal show={showApiSummary} onHide={handleCloseApiSummary}>
         <Modal.Header closeButton>
           <Modal.Title>API Summary</Modal.Title>

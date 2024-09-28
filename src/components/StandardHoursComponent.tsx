@@ -26,7 +26,7 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, sp
     <div className="container mt-4 row align-items-center justify-content-center">
       <h2 className="text-center">Regular Hours</h2>
    
-      <div className=" rounded col-6" >
+      <div className=" rounded col col-lg-6 col-sm-12 " >
         <ul className="list-group">
 
           {standardHours.map((hour) => (
@@ -38,7 +38,7 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, sp
         </ul>
       </div>
       {todayHours && todaySpecialHoursMessage !="Regular hours" && (
-        <div className="alert alert-danger col-4 rounded " role="alert">
+        <div className="alert alert-danger row mx-2 my-3 col-lg-4  col-sm-4 rounded " role="alert">
           <strong>Special Hours for  Today</strong>
           <table className="table table-sm " style={{ width: 'auto', margin: '0 auto' }}>
             <tbody>
