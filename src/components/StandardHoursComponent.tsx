@@ -7,59 +7,74 @@ interface Props {
   specialHours: SpecialHours[];
 }
 
-const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, specialHours }) => {
-  const isToday = (dayOfWeek: string) => todayHours?.dayOfWeek === dayOfWeek;
-
+const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours }) => {
   const formatTime = (time: string) => {
     const [hours, minutes] = time.split(':');
     const period = +hours >= 12 ? 'PM' : 'AM';
     const formattedHours = +hours % 12 || 12;
-    return `${formattedHours}:${minutes} ${period}`;
+    return `${formattedHours}:${minutes} ${period} ET`;
   };
 
   const todaySpecialHoursMessage = todayHours?.message || null;
   const todayOpenTime = todayHours?.openTime ? formatTime(todayHours.openTime) : null;
   const todayCloseTime = todayHours?.closeTime ? formatTime(todayHours.closeTime) : null;
-  //const todayDayOfWeek = todayHours?.dayOfWeek || null;
+
+  const groupedHours: { [key: string]: StandardHours[] } = {};
+
+  standardHours.forEach(hour => {
+    const key = `${hour.openTime}-${hour.closeTime}`;
+    if (!groupedHours[key]) {
+      groupedHours[key] = [];
+    }
+    groupedHours[key].push(hour);
+  });
 
   return (
     <div className="container mt-4 row align-items-center justify-content-center">
-      <h2 className="text-center">Regular Hours</h2>
-   
-      <div className=" rounded col col-lg-6 col-sm-12 " >
-        <ul className="list-group">
+      <h2 className="text-center">OPERATING HOURS</h2>
 
-          {standardHours.map((hour) => (
-            <li key={hour.id} className={`list-group-item ${isToday(hour.dayOfWeek) ? 'list-group-item-success' : ''}`}>
-              {hour.dayOfWeek}: {formatTime(hour.openTime)} - {formatTime(hour.closeTime)} 
-              {isToday(hour.dayOfWeek) && <strong> (Today)</strong>}
-            </li>
-          ))}
-        </ul>
+      <div className="rounded col col-lg-6 col-sm-12">
+        <table className="table table-sm">
+          <tbody>
+            {todayHours && todaySpecialHoursMessage !== "Regular hours" && (
+              <tr >
+                <td colSpan={2} className=" text-danger mb-3" role="alert">
+                  <strong>Special Hours for Today: {todaySpecialHoursMessage}<br /></strong>
+                  {todayOpenTime} - {todayCloseTime}
+                </td>
+              </tr>
+            )}
+
+            {Object.entries(groupedHours).map(([key, hours]) => {
+              const [openTime, closeTime] = key.split('-');
+              const formattedOpenTime = formatTime(openTime);
+              const formattedCloseTime = formatTime(closeTime);
+
+              const days = hours.map(hour => hour.dayOfWeek);
+              let displayDays: string;
+
+              if (days.length === 1) {
+                displayDays = days[0]; 
+              } else if (days.length === 2) {
+                displayDays = `${days[0]} - ${days[1]}`; 
+              } else {
+                displayDays = `${days[0]} - ${days[days.length - 1]}`;
+              }
+
+              return (
+                <React.Fragment key={key}>
+                  <tr>
+                    <th className="font-weight-bold border-0">{displayDays}</th>
+                  </tr>
+                  <tr>
+                    <td className="text-muted border-0">{formattedOpenTime} – {formattedCloseTime}</td>
+                  </tr>
+                </React.Fragment>
+              );
+            })}
+          </tbody>
+        </table>
       </div>
-      {todayHours && todaySpecialHoursMessage !="Regular hours" && (
-        <div className="alert alert-danger row mx-2 my-3 col-lg-4  col-sm-4 rounded " role="alert">
-          <strong>Special Hours for  Today</strong>
-          <table className="table table-sm " style={{ width: 'auto', margin: '0 auto' }}>
-            <tbody>
-              <tr>
-                <td><strong>Open Time:</strong></td>
-                <td>{todayOpenTime}</td>
-              </tr>
-              <tr>
-                <td><strong>Close Time:</strong></td>
-                <td>{todayCloseTime}</td>
-              </tr>
-              {todaySpecialHoursMessage && (
-                <tr>
-                  <td><strong>Message:</strong></td>
-                  <td>{todaySpecialHoursMessage}</td>
-                </tr>
-              )}
-            </tbody>
-          </table>
-        </div>
-      )}
     </div>
   );
 };

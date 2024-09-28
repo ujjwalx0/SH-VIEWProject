@@ -13,7 +13,7 @@ const HoursManagement: React.FC = () => {
   const [specialHours, setSpecialHours] = useState<SpecialHours[]>([]);
   const [showSpecialHours, setShowSpecialHours] = useState(false);
   const [showForm, setShowForm] = useState(false);
-  const [showApiSummary, setShowApiSummary] = useState(false); // State for API Summary modal
+  const [showApiSummary, setShowApiSummary] = useState(false); 
 
   useEffect(() => {
     fetchStandardHours();

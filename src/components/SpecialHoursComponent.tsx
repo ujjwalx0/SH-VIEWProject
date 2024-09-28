@@ -21,6 +21,7 @@ const SpecialHoursComponent: React.FC<Props> = ({ specialHours, fetchSpecialHour
   const handleEdit = (specialHour: SpecialHours) => {
     setSelectedSpecialHour(specialHour);
     setShowEditForm(true);
+    
 };
 
 
@@ -29,6 +30,7 @@ const SpecialHoursComponent: React.FC<Props> = ({ specialHours, fetchSpecialHour
     if (confirmed) {
       await deleteSpecialHours(id);
       fetchSpecialHours();
+      window.location.reload();
     }
   };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import HoursManagement from './components/HoursManagement'; // Import your HoursManagement component
+import HoursManagement from './components/HoursManagement'; 
 import './App.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 
