@@ -27,10 +27,13 @@ Each endpoint includes validation to ensure data integrity:
 
 - Dates cannot be in the past.
 - Time values must not be null.
+- Close time must be after open time.
+- Close time must be at least 30 minutes greater than open time.
 - Special hour messages are limited to 100 characters.
 - Duplicate special hours for a given date are not allowed.
 - Standard hours are validated to ensure that time values are not null.
 - Invalid date formats return a specific error response.
+
 
 ### Implementation
 

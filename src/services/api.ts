@@ -2,9 +2,9 @@ import axios from 'axios';
 import { HoursDTO, StandardHours, SpecialHours, SHResponse } from '../types';
 
 
-const API_URL = 'https://shapiproject-production.up.railway.app/api/hours/';
+//const API_URL = 'https://shapiproject-production.up.railway.app/api/hours/';
 
-//const API_URL = 'http://localhost:8080/api/hours/';
+const API_URL = 'http://localhost:8080/api/hours/';
 
 //  for today
 export const getTodayHours = async (): Promise<SHResponse<HoursDTO>> => {
