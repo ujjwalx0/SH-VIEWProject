@@ -20,7 +20,7 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, sp
   const todaySpecialHoursMessage = todayHours?.message || null;
   const todayOpenTime = todayHours?.openTime ? formatTime(todayHours.openTime) : null;
   const todayCloseTime = todayHours?.closeTime ? formatTime(todayHours.closeTime) : null;
-  const todayDayOfWeek = todayHours?.dayOfWeek || null;
+  //const todayDayOfWeek = todayHours?.dayOfWeek || null;
 
   return (
     <div className="container mt-4 row align-items-center justify-content-center">
@@ -39,7 +39,7 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours, sp
       </div>
       {todayHours && todaySpecialHoursMessage !="Regular hours" && (
         <div className="alert alert-danger col-6 rounded " role="alert">
-          <strong>Special Hours for  Today{todayDayOfWeek}:</strong>
+          <strong>Special Hours for  Today </strong>
           <table className="table table-sm " style={{ width: 'auto', margin: '0 auto' }}>
             <tbody>
               <tr>
