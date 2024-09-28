@@ -4,13 +4,13 @@ import ReactMarkdown from 'react-markdown';
 const markdown = `
 # Hello!
 
-Thank you for checking out my assignment! The assignment instructed only to outline how to implement the necessary functionality. However, due to some confusion, I reached out via email for clarification but haven't received a response. Thus, I provided a complete overview of the APIs as outlined below.
+Thank you for checking out my assignment! The assignment instructed only to outline how to implement the necessary functionality. However, due to some confusion, I reached out via email for clarification but haven't received a response. Thus, I provided a complete overview of the APIs as outlined below, although all the APIs are not rendered here on this web application.
 
 ## API Overview
 
 This application provides several endpoints to manage special and standard hours:
 
-### Endpoints:
+### Endpoints: 
 
 - **GET /api/hours/today** - Retrieves today's hours.
 - **GET /api/hours/date?date={date}** - Retrieves hours for a specified date (format: yyyy/MM/dd).
