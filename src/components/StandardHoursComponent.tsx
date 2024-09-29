@@ -39,7 +39,7 @@ const StandardHoursComponent: React.FC<Props> = ({ standardHours, todayHours }) 
             {todayHours && todaySpecialHoursMessage !== "Regular hours" && (
               <tr className='table-danger'>
                 <td colSpan={2} className=" text-danger mb-3 border-0" role="alert">
-                  <strong>Special Hours for Today: {todaySpecialHoursMessage}<br /></strong>
+                  <strong> {todaySpecialHoursMessage}<br /></strong>
                   {todayOpenTime} - {todayCloseTime}
                 </td>
               </tr>
